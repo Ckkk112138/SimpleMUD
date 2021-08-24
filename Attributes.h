@@ -52,7 +52,61 @@ namespace SimpleMUD
         {
             return m_attributes[p_attr];
         }
+        friend std::ostream& operator<<(std::ostream& p_stream, const AttributeSet& a);
+        friend std::istream& operator>>(std::istream& p_stream, AttributeSet& a);
+        
     };
+
+    inline std::ostream& operator<<(std::ostream& p_stream, const AttributeSet& a)
+    {
+        for (int i = 0; i < NUMATTRIBUTES; ++i)
+        {
+            p_stream << "[" << GetAttributeString((Attribute)i) << "] " << a.m_attributes[i] << "\n";
+
+        }
+        return p_stream;
+    }
+
+    inline std::istream& operator>>(std::istream& p_stream, AttributeSet& a)
+    {
+        std::string temp;
+        for (int i = 0; i < NUMATTRIBUTES; ++i)
+            p_stream >> temp >> a.m_attributes[i];
+        return p_stream;
+    }
+
+    enum ItemType
+    {
+        WEAPON,
+        ARMOR,
+        HEALING
+    };
+
+    const int NUMITEMTYPES = 4;
+
+    const std::string ITEMSTRINGS[NUMITEMTYPES] =
+    {
+        "WEAPON",
+        "ARMOR",
+        "HEALING",
+        "SPECIAL"
+    };
+
+    inline ItemType GetItemType(std::string p_itemtype)
+    {
+        std::string name = BasicLib::UppercCase(p_itemtype);
+        for (int i = 0; i < NUMITEMTYPES; ++i)
+        {
+            if (ITEMSTRINGS[i] == p_itemtype)
+                return ItemType(i);
+        }
+        return ItemType(0);
+    }
+
+    inline std::string GetItemTypeString(ItemType p_itemtype)
+    {
+        return ITEMSTRINGS[p_itemtype];
+    }
 }
 #endif // !ATTRIBUTES_H
 

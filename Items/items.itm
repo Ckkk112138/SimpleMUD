@@ -1,0 +1,16 @@
+[ID]            1
+[NAME]          Apple(small)
+[TYPE]          HEALING
+[MIN]           0
+[MAX]           0
+[SPEED]         0
+[PRICE]         0
+[STRENGTH]      0
+[HEALTH]        0
+[AGILITY]       0
+[MAXHITPOINTS]  0
+[ACCURACY]      0
+[DODGING]       0
+[STRIKEDAMAGE]  0
+[DAMAGEABSORB]  0
+[HPREGEN]       1

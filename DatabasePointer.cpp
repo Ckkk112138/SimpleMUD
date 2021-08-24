@@ -1,11 +1,14 @@
 #include "DatabasePointer.h"
 #include "ItemDatabase.h"
 
+
+
 namespace SimpleMUD
 {
 #define DATABASEPOINTERIMPL(pt,t,db)
 	t& pt::operator*()
 	{
+		
 		return db::get(m_id);
 	}
 
@@ -21,5 +24,6 @@ namespace SimpleMUD
 		return &(db::get(m_id));
 	}
 
-	DATABASEPOINTERIMPL(player,Player,PlayerDatabase)
+	
+	DATABASEPOINTERIMPL(item,Item,ItemDatabase)
 }

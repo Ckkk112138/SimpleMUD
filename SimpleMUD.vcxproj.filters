@@ -45,6 +45,9 @@
     <ClCompile Include="SimpleMUDLogs.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ItemDatabase.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicLib.h">
@@ -99,6 +102,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Attributes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemDatabase.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

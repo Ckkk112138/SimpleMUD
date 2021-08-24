@@ -2,12 +2,17 @@
 #define DATABASEPOINTER_H
 
 #include "Entity.h"
+#include "EntityDatabase.h"
 #include <iostream>
+
+
 
 namespace SimpleMUD
 {
 	
 #define DATABASEPOINTER(pt,t)
+	
+	
 	class t;
 	class pt
 	{
@@ -27,6 +32,17 @@ namespace SimpleMUD
 		t* operator->();
 		entityid m_id;
 	};
+
+	// useless class to prevent compiler error in VS2019
+	class db
+	{
+	public:
+		static t& get(entityid p_id)
+		{
+
+		}
+	};
+
 	inline std::ostream& operator<<(std::ostream& s, const pt& p)
 	{
 		s << p.m_id;
@@ -38,9 +54,9 @@ namespace SimpleMUD
 		s >> p.m_id;
 		return s;
 	}
-	DATABASEPOINTER(player, Player)
+
 	DATABASEPOINTER(item,Item)
-	DATABASEPOINTER(room,Room)
+	
 }
 
 #endif // !DATABASEPOINTER_H
