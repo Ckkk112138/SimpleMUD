@@ -15,7 +15,7 @@ namespace SimpleMUD
 	public:
 		class iterator: public std::map<entityid,datatype>::iterator
 		{
-		protected:
+		public:
 			iterator(typename std::map<entityid, datatype>::iterator p_itr)
 				:std::map<entityid, datatype>::iterator(p_itr){}
 			datatype& operator*()

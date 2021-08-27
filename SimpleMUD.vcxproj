@@ -89,6 +89,8 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <DisableSpecificWarnings>4716;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,6 +145,8 @@
     <ClCompile Include="BasicLib.cpp" />
     <ClCompile Include="DatabasePointer.cpp" />
     <ClCompile Include="ItemDatabase.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerDatabase.cpp" />
     <ClCompile Include="SimpleMUD.cpp" />
     <ClCompile Include="SimpleMUDLogs.cpp" />
     <ClCompile Include="SocketLibErrors.cpp" />
@@ -164,6 +168,9 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemDatabase.h" />
     <ClInclude Include="ListeningManager.h" />
+    <ClInclude Include="Logon.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerDatabase.h" />
     <ClInclude Include="SimpleMUDLogs.h" />
     <ClInclude Include="SocketLib.h" />
     <ClInclude Include="SocketLibErrors.h" />
@@ -173,9 +180,6 @@
     <ClInclude Include="SocketSet.h" />
     <ClInclude Include="Telnet.h" />
     <ClInclude Include="ThreadLib.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -5,17 +5,14 @@
 #include "EntityDatabase.h"
 #include <map>
 #include <utility>
+#include "Player.h"
 
 using namespace SimpleMUD;
 using namespace std;
 
 int main()
 {
-    map<int, int>::iterator itr;
-    map<int, int> m;
-    m.insert(pair<int, int>(3, 5));
-    itr = m.begin();
-    cout << itr->second;
+    
     
 }
 

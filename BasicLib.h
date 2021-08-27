@@ -26,6 +26,20 @@ namespace BasicLib
         return std::find_if(begin, end, two);
     }
 
+    template<class iterator, class firstpass, class secondpass,class condition>
+    inline iterator double_find_if(iterator begin, iterator end, firstpass one, secondpass two,condition con)
+    {
+        iterator itr = std::find_if(begin, end, one);
+        if (itr != end && con)
+            return itr;
+        iterator itr = std::find_if(begin, end, two);
+        if (itr != end && con)
+            return itr;
+        return itr;
+    }
+
+
+
 #ifdef __GNUC__   // Linux
     typedef long long int sint64;
     typedef unsigned long long int uint64;

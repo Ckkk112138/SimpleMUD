@@ -5,6 +5,8 @@
 #include <map>
 #include "EntityDatabase.h"
 #include "Item.h"
+#include "SimpleMUDLogs.h"
+
 
 namespace SimpleMUD
 {

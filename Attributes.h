@@ -107,6 +107,36 @@ namespace SimpleMUD
     {
         return ITEMSTRINGS[p_itemtype];
     }
+
+    enum PlayerRank
+    {
+        REGULAR,
+        GOD,
+        ADMIN
+    };
+    const int NUMPLAYERRANKTYPES = 3;
+    const std::string PLAYERRANKSTRINGS[NUMPLAYERRANKTYPES] =
+    {
+        "REGULAR",
+        "GOD",
+        "ADMIN"
+    };
+
+    inline PlayerRank GetRank(std::string p_str)
+    {
+        std::string name = BasicLib::UppercCase(p_str);
+        for (int i = 0; i < NUMITEMTYPES; ++i)
+        {
+            if (PLAYERRANKSTRINGS[i] == p_str)
+                return PlayerRank(i);
+        }
+        return PlayerRank(0);
+    }
+
+    inline std::string GetRankString(PlayerRank p_rank)
+    {
+        return PLAYERRANKSTRINGS[p_rank];
+    }
 }
 #endif // !ATTRIBUTES_H
 

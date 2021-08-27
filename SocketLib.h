@@ -14,10 +14,10 @@
 #include "SocketSet.h"
 #include "ListeningManager.h"
 #include "Connection.h"
-#include "SCChat.h"
-#include "SCLogon.h"
+//#include "SCChat.h"
+//#include "SCLogon.h"
 #include "ConnectionManager.h"
 #include "Telnet.h"
-#include "SCUserDB.h"
+//#include "SCUserDB.h"
 #endif // !SOCKETLIB_H
 
