@@ -201,6 +201,25 @@ namespace BasicLib
 	{
 		return GetD() / 365;
 	}
+
+	std::string Timer::GetString()
+	{
+		std::string str;
+		sint64 y = GetY();
+		sint64 d = GetD()%365;
+		sint64 h = GetH()%24;
+		sint64 m = GetM()%60;
+		if(y > 0)
+			str += BasicLib::tostring(y) + " years, ";
+		if (d > 0)
+			str += BasicLib::tostring(d) + " days, ";
+		if (h > 0)
+			str += BasicLib::tostring(h) + " hours, ";
+
+		str += BasicLib::tostring(m) + " minutes";
+
+		return str;
+	}
 };
 
 

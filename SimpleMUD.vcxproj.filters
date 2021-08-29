@@ -54,6 +54,15 @@
     <ClCompile Include="PlayerDatabase.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Logon.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Train.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicLib.h">
@@ -123,6 +132,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Logon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Train.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

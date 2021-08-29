@@ -30,11 +30,11 @@ namespace BasicLib
     inline iterator double_find_if(iterator begin, iterator end, firstpass one, secondpass two,condition con)
     {
         iterator itr = std::find_if(begin, end, one);
-        if (itr != end && con)
+        if ((itr != end) && con(*itr))
             return itr;
-        iterator itr = std::find_if(begin, end, two);
-        if (itr != end && con)
-            return itr;
+        iterator itr2 = std::find_if(begin, end, two);
+        if ((itr2 != end) && con(*itr))
+            return itr2;
         return itr;
     }
 
@@ -76,6 +76,8 @@ namespace BasicLib
             sint64 GetH();
             sint64 GetD();
             sint64 GetY();
+            std::string GetString();
+
         protected:
             sint64 m_inittime;
             sint64 m_starttime;
@@ -121,7 +123,7 @@ namespace BasicLib
     class TextDecorator {
     public:
         static std::string FileHeader(const std::string& p_title) {
-            return "==================================================\n" +
+            return "======================lol============================\n" +
                 p_title + "\n" +
                 "==================================================\n\n";
         }

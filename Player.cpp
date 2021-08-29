@@ -204,7 +204,7 @@ namespace SimpleMUD
             statbar += red;
         else if (ratio < 67)
         {
-            statbar == yellow;
+            statbar = yellow;
         }
         else
             statbar += green;

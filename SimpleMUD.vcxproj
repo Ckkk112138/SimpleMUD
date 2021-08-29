@@ -144,7 +144,9 @@
   <ItemGroup>
     <ClCompile Include="BasicLib.cpp" />
     <ClCompile Include="DatabasePointer.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="ItemDatabase.cpp" />
+    <ClCompile Include="Logon.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerDatabase.cpp" />
     <ClCompile Include="SimpleMUD.cpp" />
@@ -155,6 +157,7 @@
     <ClCompile Include="SocketSet.cpp" />
     <ClCompile Include="Telnet.cpp" />
     <ClCompile Include="ThreadLib.cpp" />
+    <ClCompile Include="Train.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Attributes.h" />
@@ -165,6 +168,7 @@
     <ClInclude Include="DatabasePointer.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityDatabase.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemDatabase.h" />
     <ClInclude Include="ListeningManager.h" />
@@ -180,6 +184,7 @@
     <ClInclude Include="SocketSet.h" />
     <ClInclude Include="Telnet.h" />
     <ClInclude Include="ThreadLib.h" />
+    <ClInclude Include="Train.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

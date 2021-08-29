@@ -30,6 +30,7 @@ namespace SimpleMUD
 				}
 				pos = name.find(search, pos + 1);
 			}
+			return false;
 		}
 	protected:
 		std::string m_name;
