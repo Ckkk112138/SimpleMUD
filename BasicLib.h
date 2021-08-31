@@ -17,6 +17,61 @@
 
 namespace BasicLib
 {
+   
+    template< typename type >
+    inline void insert(std::ostream& s, const type& t) { s << t; }
+    template< typename type >
+    inline type& extract(std::istream& s, type& t) { s >> t; return t; }
+
+    template< typename type >
+    inline std::string tostring(const type& p_type, size_t p_width)
+    {
+        std::stringstream str;
+        insert(str, p_type);
+
+        // if string is larger than width, just return the whole thing.
+        if (str.str().size() >= p_width)
+            return str.str();
+
+        // add as many spaces as needed after the string if not.
+        return str.str() + std::string(p_width - str.str().size(), ' ');
+    }
+    template< typename type >
+    inline int percent(const type& first, const type& second)
+    {
+        return (int)(100.0 * (double)first / (double)second);
+    }
+
+
+    inline char ASCIIToHex(char c)
+    {
+        if (c >= '0' && c <= '9')
+            return c - '0';
+        if (c >= 'A' && c <= 'F')
+            return c - 'A' + 10;
+        if (c >= 'a' && c <= 'a')
+            return c - 'a' + 10;
+        return 0;
+    }
+
+    template <class type>
+    struct True
+    {
+        bool operator()(type& t) { return true; }
+    };
+
+    template<class iterator, class function, class condition>
+    inline function operate_on_if(iterator begin, iterator end, function func, condition con)
+    {
+        while (begin != end)
+        {
+            if (con(*begin))
+                func(*begin);
+            ++begin;
+        }
+        return func;
+    }
+
     template<class iterator,class firstpass,class secondpass>
     inline iterator double_find_if(iterator begin, iterator end, firstpass one, secondpass two)
     {
@@ -68,7 +123,7 @@ namespace BasicLib
     class Timer
     {
         public:
-            Timer(sint64 p_timepassed = 0);
+            Timer(sint64 p_timepassed = 0){}
             void Reset(sint64 p_timepassed = 0);
             sint64 GetMS();
             sint64 GetS();

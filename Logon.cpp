@@ -110,6 +110,9 @@ namespace SimpleMUD
 			}
 			// add the player
 			PlayerDatabase::AddPlayer(p);
+			m_connection->Protocol().SendString(*m_connection,
+				green + tostring(PlayerDatabase::size()) +
+				newline);
 			// enter the game as a newbie.
 			GotoGame(true);
 			return;
@@ -144,7 +147,7 @@ namespace SimpleMUD
 			GetIPString(m_connection->GetRemoteAddress()) +
 			" - entered login state.");
 		m_connection->Protocol().SendString(*m_connection,
-			red + bold + "Welcome To SimpleMUD v1.0rn" +
+			red + bold + "Welcome To SimpleMUD v.ckw\r\n" +
 			"Please enter your name, or \"new\" if you are new: " + reset);
 	}
 
@@ -164,7 +167,7 @@ namespace SimpleMUD
 
 	bool Logon::AcceptibleName(const string& p_name)
 	{
-		static string inv = " \"'~!@#$%^&*+/\[]{}<>()=.,?;:";
+		static string inv = " \"'~!@#$%^&*+/\\[]{}<>()=.,?;:";
 			// must not contain any invalid characters
 			if (p_name.find_first_of(inv) != string::npos)
 				return false;

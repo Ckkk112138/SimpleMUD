@@ -16,8 +16,10 @@ namespace SimpleMUD
 		class iterator: public std::map<entityid,datatype>::iterator
 		{
 		public:
-			iterator(typename std::map<entityid, datatype>::iterator p_itr)
-				:std::map<entityid, datatype>::iterator(p_itr){}
+			iterator(){}
+			iterator(const typename std::map<entityid, datatype>::iterator& p_itr)
+				:m_itr(p_itr)
+			{}
 			datatype& operator*()
 			{
 				return m_itr->second;

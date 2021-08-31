@@ -52,7 +52,7 @@ namespace SimpleMUD
 			p.SendString(clearscreen);
 		}
 		p.SendString(white + bold +
-			"--------------------------------- Your Stats ----------------------------------rn" +
+			"--------------------------------- Your Stats ----------------------------------\r\n" +
 			"Player:           " + p.Name() + "\r\n" +
 			"Level:            " + tostring(p.Level()) + "\r\n" +
 			"Stat Points Left: " + tostring(p.StatPoints()) + "\r\n" +

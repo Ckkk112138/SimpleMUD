@@ -20,7 +20,11 @@ namespace SimpleMUD
 		}
 		static void LoadPlayer(std::string p_name);
 		static void SavePlayer(entityid p_player);
-		static entityid LastID();
+		static entityid LastID()
+		{
+			entityid id = m_map.rbegin()->first;
+			return id;
+		}
 		static iterator findactive(const std::string& p_name);
 		static iterator findloggedin(const std::string& p_name);
 		static void Logout(entityid p_player);

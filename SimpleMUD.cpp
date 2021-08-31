@@ -2,17 +2,52 @@
 //
 
 #include <iostream>
-#include "EntityDatabase.h"
-#include <map>
-#include <utility>
-#include "Player.h"
+#include "ItemDatabase.h"
+#include "PlayerDatabase.h"
+#include "SocketLib.h"
+#include "Game.h"
+#include "SimpleMUDLogs.h"
+#include "ThreadLib.h"
 
+using namespace SocketLib;
 using namespace SimpleMUD;
+
+
 using namespace std;
 
 int main()
 {
-    
+	try
+	{
+		ItemDatabase::Load();
+		PlayerDatabase::Load();
+		ListeningManager<Telnet, Logon> lm;
+		ConnectionManager<Telnet, Logon> cm(128, 60, 65536);
+
+		lm.SetConnectionManager(&cm);
+		lm.AddPort(5099);
+		Game::GetTimer().Reset();
+		Game::Running() = true;
+		while (Game::Running())
+		{
+			lm.Listen();
+			cm.Manage();
+			ThreadLib::YieldThread();
+		}
+			;
+
+	}
+	catch (SocketLib::Exception& e) {   // catch socket exceptions
+		ERRORLOG.Log("Fatal Socket Error: " + e.PrintError());
+	}
+	catch (std::exception& e) {         // catch standard exceptions
+		ERRORLOG.Log("Standard Error: " + std::string(e.what()));
+	}
+	catch (...) {                       // catch other exceptions
+		ERRORLOG.Log("Unspecified Error");
+	}
+	SimpleMUD::PlayerDatabase::Save();   // save the player database
+
     
 }
 

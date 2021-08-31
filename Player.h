@@ -148,7 +148,7 @@ namespace SimpleMUD
 		}
 		p_stream << "\n";
 		p_stream << "[WEAPON] " << p.m_weapon << "\n";
-		p_stream << "[WEAPON] " << p.m_armor << "\n";
+		p_stream << "[ARMOR] " << p.m_armor << "\n";
 		return p_stream;
 	}
 
