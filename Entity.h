@@ -14,7 +14,7 @@ namespace SimpleMUD
 		std::string& Name() { return m_name; }
 		entityid& ID() { return m_id; }
 		std::string CompName() { return BasicLib::LowerCase(m_name); }
-		bool FullMatch(const std::string& p_name) { return CompName() == BasicLib::LowerCase(p_name); }
+		bool FullMatch(const std::string& p_name) { return BasicLib::LowerCase(m_name) == BasicLib::LowerCase(p_name); }
 		bool Match(const std::string& p_name)
 		{
 			if (p_name.size() == 0)

@@ -5,6 +5,7 @@
 #include "EntityDatabase.h"
 #include <string>
 #include "SimpleMUDLogs.h"
+#include <iostream>
 
 namespace SimpleMUD
 {
@@ -28,6 +29,18 @@ namespace SimpleMUD
 		static iterator findactive(const std::string& p_name);
 		static iterator findloggedin(const std::string& p_name);
 		static void Logout(entityid p_player);
+		static void  PrintPlayer()
+		{
+			for (int i = 0; i < m_map.size(); ++i)
+			{
+				std::cout << m_map[i] << "\n";
+			}
+		}
+		static void  PrintPlayer(int i)
+		{
+			std::cout << m_map[i] << "\n";
+
+		}
 
 	};
 

@@ -209,7 +209,7 @@ namespace SimpleMUD
         else
             statbar += green;
         statbar += tostring(HitPoints()) + white + "/" + tostring(GetAttr(MAXHITPOINTS)) + "]";
-        Conn()->Protocol().SendString(*Conn(), clearline + "r" + statbar + reset);
+        Conn()->Protocol().SendString(*Conn(), clearline + "\r" + statbar + reset);
     }
 
 }

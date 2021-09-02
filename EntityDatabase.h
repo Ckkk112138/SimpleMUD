@@ -4,32 +4,40 @@
 #include <map>
 #include "Entity.h"
 #include <vector>
+#include <iostream>
+#include <iterator>
+
+
 
 namespace SimpleMUD
 {
 	template<class datatype>
 	class EntityDatabase
 	{
-	public:
+	protected:
 		static std::map<entityid, datatype> m_map;
 	public:
+		
 		class iterator: public std::map<entityid,datatype>::iterator
 		{
 		public:
+			typedef typename std::map<entityid, datatype>::iterator eitr;
 			iterator(){}
 			iterator(const typename std::map<entityid, datatype>::iterator& p_itr)
-				:m_itr(p_itr)
-			{}
+			{
+				eitr& itr = *this;
+				itr = p_itr;
+			}
 			datatype& operator*()
 			{
-				return m_itr->second;
+				eitr& itr = *this;
+				return itr->second;
 			}
 			datatype* operator->()
 			{
-				return &(m_itr->second);
+				eitr& itr = *this;
+				return &(itr->second);
 			}
-		private:
-			typename std::map<entityid, datatype>::iterator m_itr;
 	
 		};
 		static iterator begin() { return iterator(m_map.begin()); }
@@ -55,9 +63,13 @@ namespace SimpleMUD
 		{
 			return find(p_name) != end();
 		}
-		static iterator findfull(const std::string& p_name)
+		static  iterator findfull(const std::string& p_name)
 		{
-			return std::find_if(begin(), end(), matchentityfull(p_name));
+			matchentityfull m(p_name);
+			std::cout << p_name << "!!!!" << std::endl;
+			
+			
+			return std::find_if(begin(), end(), m);
 		}
 		static bool hasfull(std::string p_name)
 		{
@@ -70,8 +82,7 @@ namespace SimpleMUD
 		
 	};
 
-	template<class datatype>
-	std::map<entityid, datatype> EntityDatabase<datatype>::m_map;
+	
 
 	template<class datatype>
 	class EntityDatabaseVector
@@ -90,8 +101,7 @@ namespace SimpleMUD
 			return m_vector[p_id];
 		}
 	};
-	template<class datatype>
-	std::vector<datatype> EntityDatabaseVector<datatype>::m_vector;
+	
 }
 #endif // !ENTITYDATABASE_H
 

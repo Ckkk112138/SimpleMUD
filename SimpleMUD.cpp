@@ -8,6 +8,7 @@
 #include "Game.h"
 #include "SimpleMUDLogs.h"
 #include "ThreadLib.h"
+#include "Entity.h"
 
 using namespace SocketLib;
 using namespace SimpleMUD;
@@ -15,17 +16,36 @@ using namespace SimpleMUD;
 
 using namespace std;
 
+struct match
+{
+	std::string m_str;
+	match(const std::string& p_str)
+		:m_str(p_str)
+	{
+
+	}
+	bool operator()(pair<int,string> par)
+	{
+		return par.second == m_str;
+	}
+	
+
+};
+
 int main()
 {
 	try
 	{
-		ItemDatabase::Load();
 		PlayerDatabase::Load();
+		PlayerDatabase::PrintPlayer();
+		ItemDatabase::Load();
+		
+		
 		ListeningManager<Telnet, Logon> lm;
 		ConnectionManager<Telnet, Logon> cm(128, 60, 65536);
 
 		lm.SetConnectionManager(&cm);
-		lm.AddPort(5099);
+		lm.AddPort(5000);
 		Game::GetTimer().Reset();
 		Game::Running() = true;
 		while (Game::Running())
@@ -34,7 +54,7 @@ int main()
 			cm.Manage();
 			ThreadLib::YieldThread();
 		}
-			;
+			
 
 	}
 	catch (SocketLib::Exception& e) {   // catch socket exceptions
@@ -46,8 +66,14 @@ int main()
 	catch (...) {                       // catch other exceptions
 		ERRORLOG.Log("Unspecified Error");
 	}
-	SimpleMUD::PlayerDatabase::Save();   // save the player database
+	PlayerDatabase::Save();   // save the player database
 
+
+	/*map<int, string> m;
+	m[0] = "ckw";
+	m[1] = "cll";
+	map<int, string>::iterator itr = find_if(m.begin(), m.end(), match("ckw"));
+	cout << itr->second;*/
     
 }
 

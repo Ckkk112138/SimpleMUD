@@ -2,14 +2,14 @@
 
 namespace SimpleMUD
 {
-	std::map<entityid, Item> ItemDatabase::m_map;
+	std::map<entityid, Item> EntityDatabase<Item>::m_map;
 
 	bool ItemDatabase::Load()
 	{
 		std::ifstream file("items/items.itm");
 		entityid id;
 		std::string temp;
-		while (file.good())
+		while (!file.eof())
 		{
 			file >> temp >> id;
 			m_map[id].ID() = id;

@@ -46,7 +46,7 @@ namespace SimpleMUD
 		static BasicLib::Timer& GetTimer() { return s_timer; }
 		static bool& Running() { return isRunning; }
 		Game(Connection<Telnet>& p_conn, player p_player)
-			:Telnet::handler(p_conn)
+		:Telnet::handler(p_conn)
 		{
 			m_player = p_player;
 		}

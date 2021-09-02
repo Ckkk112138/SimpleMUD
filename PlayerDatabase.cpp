@@ -13,13 +13,16 @@ using std::string;
 
 namespace SimpleMUD
 {
+	std::map<entityid, Player> EntityDatabase<Player>::m_map;
+
 	bool PlayerDatabase::Load()
 	{
 		ifstream file("players/players.txt");
 		string name;
-		while (file.good())
+		while (!file.eof())
 		{
 			file >> name >> std::ws;
+			
 			LoadPlayer(name);
 		}
 		return true;
@@ -27,7 +30,7 @@ namespace SimpleMUD
 
 	void PlayerDatabase::LoadPlayer(string p_name)
 	{
-		entityid id;
+		entityid id = 0;
 		string temp;
 		p_name = PlayerFileName(p_name);
 		ifstream file(p_name.c_str());
@@ -41,11 +44,13 @@ namespace SimpleMUD
 	{
 		ofstream file("players/players.txt");
 		iterator itr = begin();
+
 		while (itr != end())
 		{
 			file << itr->Name() << "\n";
 			SavePlayer(itr->ID());
 			++itr;
+			USERLOG.Log("Save player");
 
 		}
 		return true;
@@ -71,6 +76,7 @@ namespace SimpleMUD
 		m_map[p_player.ID()] = p_player;
 		ofstream file("players/players.txt", std::ios::app);
 		file << p_player.Name() << "\n";
+		ERRORLOG.Log("Success");
 		SavePlayer(p_player.ID());
 		return true;
 	}
